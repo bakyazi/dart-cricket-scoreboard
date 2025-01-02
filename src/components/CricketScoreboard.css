@@ -1,0 +1,272 @@
+.scoreboard {
+    background-color: var(--board-background);
+    min-height: 100vh;
+    padding: 0;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.cricket-board-container {
+    position: relative;
+    width: var(--board-width);
+}
+
+.cricket-board {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: var(--board-background);
+    color: var(--text-color);
+    box-shadow: none;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: var(--grid-template);
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+}
+
+.row:first-child {
+    border-bottom: 2px solid var(--border-color);
+}
+
+.row:first-child::after {
+    display: none;
+}
+
+.row:last-child {
+    border-bottom: none;
+}
+
+/* Mobile styles */
+@media screen and (max-width: 768px) {
+    .scoreboard {
+        padding: 0;
+    }
+
+    .cricket-board-container {
+        width: 100% !important;
+    }
+
+    .cricket-board {
+        width: 100%;
+        margin-top: 8px;
+    }
+
+    .row {
+        grid-template-columns: var(--grid-template);
+        grid-template-columns: repeat(var(--column-count), 1fr);
+    }
+
+    .player-name {
+        padding: 4px 2px;
+        font-size: 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .number-cell {
+        padding: 4px 2px;
+        height: 36px;
+        line-height: 36px;
+        font-size: 14px;
+    }
+
+    .clickable {
+        font-size: 18px;
+    }
+
+    .modal-content {
+        margin: 0 20px;
+        padding: 20px;
+    }
+
+    .modal-content h2 {
+        font-size: 24px !important;
+    }
+
+    .modal-content h5 {
+        font-size: 18px !important;
+    }
+}
+
+/* Very small screens */
+@media screen and (max-width: 380px) {
+    .player-name {
+        font-size: 12px;
+        padding: 6px 2px;
+    }
+
+    .number-cell {
+        padding: 6px 2px;
+        font-size: 12px;
+        height: 32px;
+        line-height: 32px;
+    }
+
+    .clickable {
+        font-size: 16px;
+    }
+}
+
+.row>* {
+    border-right: 1px solid var(--border-color);
+}
+
+.row>*:last-child {
+    border-right: none;
+}
+
+.player-pair {
+    display: contents;
+}
+
+.player-column {
+    width: 120px;
+}
+
+.player-name {
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid var(--border-color);
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.number-cell {
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.marks-container {
+    min-height: 40px;
+}
+
+.numbers-column {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clickable {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.clickable:hover {
+    background-color: transparent;
+}
+
+.winner-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 300px;
+    text-align: center;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+}
+
+[data-theme='dark'] .winner-modal {
+    background-color: #2c2c2c;
+    color: white;
+    border: 1px solid #444;
+}
+
+.modal-content {
+    background-color: var(--board-background);
+    padding: 40px;
+    border-radius: 8px;
+    text-align: center;
+    outline: none;
+    color: var(--text-color);
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+}
+
+.disabled {
+    cursor: default;
+    opacity: 0.3;
+}
+
+.inactive {
+    opacity: 0.3;
+}
+
+.active {
+    opacity: 1;
+}
+
+/* Fix the header line for the center column */
+.numbers-column .player-name {
+    border-bottom: none;
+    /* Remove the individual border */
+}
+
+.row:first-child .numbers-column {
+    border-bottom: 2px solid var(--border-color);
+    /* Add border to the column instead */
+}
+
+.cricket-cell {
+    border: 1px solid var(--border-color);
+}
+
+.header-cell {
+    border: 1px solid var(--border-color);
+}
+
+.player-score {
+    /* Remove any hardcoded color */
+}
+
+.modal-content button {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
