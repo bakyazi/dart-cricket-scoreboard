@@ -1,5 +1,6 @@
 {
   "name": "dart-cricket-scoreboard",
+  "homepage": "https://bakyazi.github.io/dart-cricket-scoreboard",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
