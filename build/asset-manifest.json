@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/dart-cricket-scoreboard/static/css/main.3d5f68a0.css",
+    "main.js": "/dart-cricket-scoreboard/static/js/main.61690454.js",
+    "index.html": "/dart-cricket-scoreboard/index.html",
+    "main.3d5f68a0.css.map": "/dart-cricket-scoreboard/static/css/main.3d5f68a0.css.map",
+    "main.61690454.js.map": "/dart-cricket-scoreboard/static/js/main.61690454.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3d5f68a0.css",
+    "static/js/main.61690454.js"
+  ]
+}
